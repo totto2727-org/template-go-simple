@@ -1,0 +1,7 @@
+.direnv/
+.omo/
+result
+result-*
+coverage.out
+*.test
+.DS_Store
