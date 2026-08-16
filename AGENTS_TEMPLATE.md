@@ -23,7 +23,7 @@ Run commands from the repository root inside the Nix development shell.
 ### Execution Rules
 
 - Enter the environment with `nix develop` before running project commands.
-- Use Just recipes instead of invoking formatting, linting, build, or test commands directly.
+- Use Just recipes for Go formatting, linting, build, test, and source execution.
 
 ### Standard Tasks
 
@@ -33,11 +33,10 @@ just check
 just build
 just test
 just run
-just run-nix
 just ci
+nix build .#project
+nix run .
 ```
-
-Targeted build tasks are available as `build-go` and `build-nix`.
 
 ## Package Updates
 

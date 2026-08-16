@@ -33,5 +33,7 @@ Enter the Nix development shell and run the standard Just tasks when modifying t
 nix develop
 just fix
 just ci
-just run-nix
+just run
+nix build .#project
+nix run .
 ```
