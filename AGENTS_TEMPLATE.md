@@ -4,7 +4,6 @@
 
 ```text
 .github/workflows/  Validation and optional publishing workflows
-CLAUDE.md           Relative alias to AGENTS.md
 Justfile            Go development tasks
 flake.nix           Development shell and optional package outputs
 go.mod              Module identity, Go version, and dependencies
@@ -63,6 +62,5 @@ Replace the sample paths with the initialized project's actual source and test l
 - Run `go mod tidy` after dependency changes and commit `go.mod` and `go.sum` updates together when present.
 - Update `flake.lock` when Nix inputs change.
 - Keep privileged publishing workflows disabled until every mutable `uses:` reference is pinned to an audited full commit SHA.
-- Preserve `CLAUDE.md` as the relative symlink to `AGENTS.md`.
 
 _This AGENTS.md was generated from the [share-artifact skill](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/SKILL.md) and [AGENTS template](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/agents/template.md)._
