@@ -1,40 +1,27 @@
-# username/project
+# Go Simple CLI Template
 
-A simple Go library project.
+A GitHub repository template for starting a simple Go command-line application with a Nix development shell, a buildable package and overlay, Just commands, automated checks, and an optional FlakeHub publishing workflow.
 
-## Start a project
+## Use This Template
 
-1. Create a repository with GitHub's **Use this template** button.
-2. Replace `github.com/username/project` in `go.mod` with the new module path.
-3. Replace the `project` package name and update this README.
-4. To publish the Nix flake to FlakeHub, rename `.github/workflows/flakehub-publish-rolling.yml.disabled` to `flakehub-publish-rolling.yml`. Delete the disabled file if FlakeHub publishing is not needed.
+Create a repository with GitHub's **Use this template** button, then follow the conversion workflow in [AGENTS.md](./AGENTS.md). The workflow replaces the template's explanatory documentation with project-specific files based on `README_TEMPLATE.md` and `AGENTS_TEMPLATE.md`.
 
-## Usage
+## Included Tooling
 
-```go
-package main
+- A Nix development shell with Go, golangci-lint, and Just.
+- A buildable Nix package and reusable overlay.
+- GitHub Actions checks for formatting, linting, building, and testing.
+- An optional FlakeHub publishing workflow, disabled by default.
+- A dependency-free Hello World CLI and end-to-end test that can be replaced with project code.
 
-import (
-	"fmt"
+## Documentation Layout
 
-	"github.com/username/project"
-)
-
-func main() {
-	fmt.Println(project.Add(2, 3))
-}
-```
+- `README.md` and `AGENTS.md` explain this template and the conversion workflow.
+- `README_TEMPLATE.md` and `AGENTS_TEMPLATE.md` are customized and renamed for the copied project.
 
 ## Development
 
-Enter the Nix development shell and run the standard Go checks:
-
-```bash
-nix develop
-just check
-just build
-just test
-```
+For template conversion steps, development commands, and publishing configuration, see [AGENTS.md](./AGENTS.md).
 
 ## License
 
