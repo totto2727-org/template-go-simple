@@ -1,60 +1,68 @@
 # username/project
 
-Replace this paragraph with the project-specific guidance that AI agents need before modifying the repository.
+## Repository structure
 
-## Language Rules
-
-- Use English by default for source code, configuration, documentation, and other repository-recorded artifacts.
-- Replace or extend these rules when the copied project has additional language requirements.
-
-## Repository Structure
-
-- `go.mod` defines the module path and Go version.
-- `main.go` contains the command-line application entry point.
-- `main_test.go` covers externally observable command behavior.
-- `package.nix` defines the installable Nix package.
-- `flake.nix` and `flake.lock` expose the package and overlay while pinning Go, golangci-lint, Just, and other Nix-provided tools.
-- `.github/workflows/` contains validation and optional publishing workflows.
-
-## Development Commands
-
-Run commands from the repository root inside the Nix development shell.
-
-### Execution Rules
-
-- Enter the environment with `nix develop` before running project commands.
-- Use Just recipes for Go formatting, linting, build, test, and source execution.
-
-### Standard Tasks
-
-```bash
-just fix
-just check
-just build
-just test
-just run
-just ci
-nix build .#project
-nix run .
+```text
+.github/workflows/  Validation and optional publishing workflows
+CLAUDE.md           Relative alias to AGENTS.md
+Justfile            Go development tasks
+flake.nix           Development shell and optional package outputs
+go.mod              Module identity, Go version, and dependencies
+main.go             Command-line application entry point
+main_test.go        End-to-end command behavior tests
+package.nix         Optional installable Nix package
 ```
 
-## Package Updates
+Replace the sample paths with the initialized project's actual source and test layout.
 
-Update `go.mod` and `go.sum` together when dependencies change. Run `nix flake update` when Nix inputs change.
+## Development commands
 
-## Go Conventions
+### Execution rules
 
-- Prefer the standard library when it fully supports the required behavior.
+- Run commands from the repository root.
+- Enter the environment with `nix develop` before running project tasks.
+- Use Just recipes for Go formatting, linting, build, test, and source execution.
+- Run Nix package commands directly; never add them to Just or to the `just ci` dependency graph.
+
+### Standard tasks
+
+- `nix develop` — Enter the pinned development environment.
+- `just fix` — Format Go source and apply supported lint fixes.
+- `just check` — Verify formatting and lint findings.
+- `just build` — Build the Go command.
+- `just test` — Run Go tests with the race detector.
+- `just run` — Run the command from source.
+- `just ci` — Run Go check, build, and test tasks without Nix package validation.
+- `nix build .#project` — Build the optional Nix package independently.
+- `nix run .` — Run the optional Nix package independently.
+
+## Architecture
+
+### CLI boundaries
+
 - Keep the command entry point small and move reusable application logic into focused packages only when needed.
-- Cover externally observable command behavior with end-to-end tests.
+- Propagate errors to the command boundary and define caller-visible output and exit-status behavior.
+- Cover externally observable command behavior with focused tests.
 
-## Architecture and Conventions
+### Nix packaging
 
-Replace this section with the copied project's source layout, public boundaries, naming rules, and other repository-specific constraints.
+- Keep `package.nix`, package outputs, and the overlay only when consumers need an installable Nix package.
+- Keep Nix package validation separate from Just and CI.
 
-## Development Tools
+## Development tools
 
-- **Go** - builds, tests, and runs the command-line application.
-- **golangci-lint** - formats and checks Go source code.
-- **Just** - provides the standard development commands.
-- **Nix flakes** - build and expose the package and overlay while pinning Go, golangci-lint, Just, and other Nix-provided tools.
+- **Go**: Builds, tests, and runs the command-line application.
+- **golangci-lint**: Formats and checks Go source.
+- **Just**: Defines the Go development task surface.
+- **Nix flakes**: Pin the development toolchain and optionally build and expose the package and overlay.
+
+## Package-specific rules
+
+- Replace this section with repository-specific invariants and remove placeholder guidance before handoff.
+- Prefer the Go standard library when it fully supports the required behavior.
+- Run `go mod tidy` after dependency changes and commit `go.mod` and `go.sum` updates together when present.
+- Update `flake.lock` when Nix inputs change.
+- Keep privileged publishing workflows disabled until every mutable `uses:` reference is pinned to an audited full commit SHA.
+- Preserve `CLAUDE.md` as the relative symlink to `AGENTS.md`.
+
+_This AGENTS.md was generated from the [share-artifact skill](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/SKILL.md) and [AGENTS template](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/agents/template.md)._
