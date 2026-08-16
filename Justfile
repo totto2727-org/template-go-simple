@@ -11,9 +11,12 @@ check:
     golangci-lint run ./...
 
 build:
-    go build ./...
+    go build -o ./_build/project .
 
 test:
     go test -race ./...
+
+run:
+    go run .
 
 ci: check build test

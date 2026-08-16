@@ -1,5 +1,6 @@
 .direnv/
 .omo/
+_build/
 result
 result-*
 coverage.out
