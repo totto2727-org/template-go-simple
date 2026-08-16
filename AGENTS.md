@@ -5,7 +5,6 @@
 ```text
 .github/workflows/          Validation and optional publishing workflows
 AGENTS_TEMPLATE.md          AI and developer guidance for initialized projects
-CLAUDE.md                   Relative alias to AGENTS.md
 README_TEMPLATE.md          End-user documentation for initialized projects
 Justfile                    Go development tasks
 flake.nix                   Development shell, package outputs, and overlay
@@ -57,7 +56,6 @@ package.nix                 Installable Nix package
 - This `AGENTS.md` is the canonical AI-agent source for template initialization and maintenance.
 - `README_TEMPLATE.md` and `AGENTS_TEMPLATE.md` become the initialized project's canonical documents.
 - All four documents follow the matching share-artifact specification and retain their provenance footers.
-- `CLAUDE.md` is a relative symlink to the canonical `AGENTS.md`.
 
 ## Development tools
 
@@ -91,7 +89,7 @@ mv AGENTS_TEMPLATE.md AGENTS.md
 
 8. Run `just ci`.
    If the Nix package remains, run `nix build .#project` and `nix run .` separately; do not add either command to Just or CI.
-9. Confirm that `CLAUDE.md` still resolves to `AGENTS.md`, no template placeholders remain, documentation links resolve, and `git diff --check` passes.
+9. Confirm that no template placeholders remain, documentation links resolve, and `git diff --check` passes.
 
 ### Maintenance
 
