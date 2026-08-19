@@ -36,18 +36,6 @@ gh repo create username/project --template totto2727-org/template-go-simple --pu
 cd project
 ```
 
-2. Run the sample directly from source:
-
-```bash
-go run .
-```
-
-3. Alternatively, run the packaged command through Nix:
-
-```bash
-nix run .
-```
-
 ## API
 
 ### `project`
