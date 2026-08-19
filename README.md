@@ -23,18 +23,26 @@ Hello, world!
 
 ## Prerequisites
 
+- **GitHub CLI** (optional): Run the documented creation command; GitHub's **Use this template** flow can be used instead.
 - **Go 1.25 or later**: Required to run the command from source with `go run .`.
 - **Nix with flakes enabled**: Optional alternative for running the packaged command with `nix run .`.
 
 ## Setup
 
-1. Run the sample directly from source:
+1. Create and clone a repository from the template with GitHub CLI, or use GitHub's **Use this template** flow and clone it normally:
+
+```bash
+gh repo create username/project --template totto2727-org/template-go-simple --public --clone
+cd project
+```
+
+2. Run the sample directly from source:
 
 ```bash
 go run .
 ```
 
-2. Alternatively, run the packaged command through Nix:
+3. Alternatively, run the packaged command through Nix:
 
 ```bash
 nix run .
