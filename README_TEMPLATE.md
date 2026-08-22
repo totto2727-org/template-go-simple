@@ -22,21 +22,39 @@ Hello, world!
 
 ## Setup
 
-1. Show direct execution without installation.
+Choose one of the following setup methods. Only one is required.
+
+### Run without installing
+
+Run with either Go:
 
 ```bash
 go run github.com/username/project@latest
+```
+
+or Nix:
+
+```bash
 nix run github:username/project
 ```
 
-2. Show installation with Go and Nix.
+### Install the command
+
+Install with either Go:
 
 ```bash
 go install github.com/username/project@latest
+```
+
+or Nix:
+
+```bash
 nix profile install github:username/project
 ```
 
-3. Show declarative installation through the project's overlay in `flake.nix`.
+### Add declaratively with Nix
+
+Add the project's overlay and package to `flake.nix`.
 
 ```nix
 {
