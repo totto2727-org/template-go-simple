@@ -4,10 +4,10 @@ Replace this paragraph with a concise description of what the command-line appli
 
 ## Usage
 
-Replace this example with the copied project's primary command and representative output.
+Prefer a direct `go run` example with no application options and representative output.
 
 ```console
-$ project
+$ go run github.com/username/project@latest
 Hello, world!
 ```
 
@@ -18,14 +18,65 @@ Hello, world!
 
 ## Prerequisites
 
-- **Runtime or tool**: Replace this text with an end-user requirement.
+- **Go or Nix**: Replace this text with the minimum Go requirement, or require Nix with flakes enabled for the Nix paths.
 
 ## Setup
 
-1. Replace this step with the smallest installation or configuration action an end user needs.
+Choose one of the following setup methods. Only one is required.
+
+### Run without installing
+
+Run with either Go:
 
 ```bash
-replace-with-setup-command
+go run github.com/username/project@latest
+```
+
+or Nix:
+
+```bash
+nix run github:username/project
+```
+
+### Install the command
+
+Install with either Go:
+
+```bash
+go install github.com/username/project@latest
+```
+
+or Nix:
+
+```bash
+nix profile install github:username/project
+```
+
+### Add declaratively with Nix
+
+Add the project's overlay and package to `flake.nix`.
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    project.url = "github:username/project";
+  };
+
+  outputs = { nixpkgs, project, ... }:
+    let
+      system = "aarch64-darwin"; # Replace with a supported host system.
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ project.overlays.default ];
+      };
+    in
+    {
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [ pkgs.project ];
+      };
+    };
+}
 ```
 
 ## API
