@@ -75,7 +75,7 @@ The agent must complete this workflow instead of instructing the human to perfor
 1. Determine the intended repository name, Go module path, command name, description, license, public interface, and publishing requirements from the user's request and repository context.
 2. Replace `github.com/username/project`, `project`, and template metadata in `go.mod`, `package.nix`, `flake.nix`, source files, tests, and workflows where applicable.
 3. Replace the sample CLI and test with the smallest project-specific implementation that satisfies the request.
-4. If the project does not need a Nix package or overlay, delete `package.nix` and remove `packages`, `overlays`, and related package wiring from `flake.nix` while retaining the development shell.
+4. Keep `package.nix` and the package and overlay outputs for distributable CLI applications so every documented Nix path remains valid; remove them only when the initialized project is no longer distributed as a CLI.
 5. Render complete project-facing `README_TEMPLATE.md` and `AGENTS_TEMPLATE.md` documents from the current share-artifact specifications.
    Remove all placeholder instructions and choose one complete README API mode.
    Keep README Usage focused on `go run module/path@latest`, and document direct Go/Nix execution, Go/Nix installation, and declarative overlay-based `flake.nix` setup.

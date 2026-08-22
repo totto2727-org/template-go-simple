@@ -45,7 +45,7 @@ Replace the sample paths with the initialized project's actual source and test l
 
 ### Nix packaging
 
-- Keep `package.nix`, package outputs, and the overlay only when consumers need an installable Nix package.
+- Keep `package.nix`, package outputs, and the overlay for distributable CLI applications so every documented Nix path remains valid; remove them only when the project is no longer distributed as a CLI.
 - Keep Nix package validation separate from Just and CI.
 
 ## Development tools
