@@ -58,6 +58,8 @@ Replace the sample paths with the initialized project's actual source and test l
 ## Package-specific rules
 
 - Replace this section with repository-specific invariants and remove placeholder guidance before handoff.
+- Keep README Usage centered on `go run module/path@latest` with no application options when possible.
+- Keep README Setup complete: direct `go run` and `nix run`, installed `go install` and `nix profile install`, and a declarative `flake.nix` example using `overlays.default`.
 - Prefer the Go standard library when it fully supports the required behavior.
 - Run `go mod tidy` after dependency changes and commit `go.mod` and `go.sum` updates together when present.
 - Update `flake.lock` when Nix inputs change.

@@ -78,6 +78,7 @@ The agent must complete this workflow instead of instructing the human to perfor
 4. If the project does not need a Nix package or overlay, delete `package.nix` and remove `packages`, `overlays`, and related package wiring from `flake.nix` while retaining the development shell.
 5. Render complete project-facing `README_TEMPLATE.md` and `AGENTS_TEMPLATE.md` documents from the current share-artifact specifications.
    Remove all placeholder instructions and choose one complete README API mode.
+   Keep README Usage focused on `go run module/path@latest`, and document direct Go/Nix execution, Go/Nix installation, and declarative overlay-based `flake.nix` setup.
 6. If FlakeHub publishing is required, pin every mutable `uses:` reference in the privileged workflow to an audited full commit SHA before renaming `.github/workflows/flakehub-publish-rolling.yml.disabled`; otherwise delete the disabled workflow.
 7. Remove the template-only canonical documents and promote the completed project documents:
 

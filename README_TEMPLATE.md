@@ -4,10 +4,10 @@ Replace this paragraph with a concise description of what the command-line appli
 
 ## Usage
 
-Replace this example with the application's primary command and representative output.
+Prefer a direct `go run` example with no application options and representative output.
 
 ```console
-$ project
+$ go run github.com/username/project@latest
 Hello, world!
 ```
 
@@ -18,14 +18,47 @@ Hello, world!
 
 ## Prerequisites
 
-- **Runtime or tool**: Replace this text with an end-user requirement.
+- **Go or Nix**: Replace this text with the minimum Go requirement, or require Nix with flakes enabled for the Nix paths.
 
 ## Setup
 
-1. Replace this step with the smallest installation or configuration action an end user needs.
+1. Show direct execution without installation.
 
 ```bash
-replace-with-setup-command
+go run github.com/username/project@latest
+nix run github:username/project
+```
+
+2. Show installation with Go and Nix.
+
+```bash
+go install github.com/username/project@latest
+nix profile install github:username/project
+```
+
+3. Show declarative installation through the project's overlay in `flake.nix`.
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    project.url = "github:username/project";
+  };
+
+  outputs = { nixpkgs, project, ... }:
+    let
+      system = "aarch64-darwin"; # Replace with a supported host system.
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ project.overlays.default ];
+      };
+    in
+    {
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [ pkgs.project ];
+      };
+    };
+}
 ```
 
 ## API
