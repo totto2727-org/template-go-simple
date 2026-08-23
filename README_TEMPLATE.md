@@ -22,9 +22,9 @@ Hello, world!
 
 ## Setup
 
-Choose one of the following setup methods. Only one is required.
+Keep every delivery path that the completed command supports, and remove unsupported paths before publishing its README. A command-line application should document a temporary invocation, a persistent installation, and a declarative Nix consumer configuration when those paths are available. Libraries instead document only their dependency-add command.
 
-### Run without installing
+### Run once without installing
 
 Run with either Go:
 
@@ -38,7 +38,7 @@ or Nix:
 nix run github:username/project
 ```
 
-### Install the command
+### Install the command persistently
 
 Install with either Go:
 
@@ -49,7 +49,7 @@ go install github.com/username/project@latest
 or Nix:
 
 ```bash
-nix profile install github:username/project
+nix profile add github:username/project
 ```
 
 ### Add declaratively with Nix
