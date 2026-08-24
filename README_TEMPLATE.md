@@ -24,7 +24,7 @@ Hello, world!
 
 Document the supported paths. For applications, include Run, Install, and declarative Nix setup when available. For libraries, include dependency setup only.
 
-### Run
+### Run without installing
 
 ```bash
 go run github.com/username/project@latest
