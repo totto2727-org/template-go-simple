@@ -22,37 +22,23 @@ Hello, world!
 
 ## Setup
 
-Choose one of the following setup methods. Only one is required.
+Document the supported paths. For applications, include Run, Install, and declarative Nix setup when available. For libraries, include dependency setup only.
 
 ### Run without installing
 
-Run with either Go:
-
 ```bash
 go run github.com/username/project@latest
-```
-
-or Nix:
-
-```bash
 nix run github:username/project
 ```
 
-### Install the command
-
-Install with either Go:
+### Install
 
 ```bash
 go install github.com/username/project@latest
+nix profile add github:username/project
 ```
 
-or Nix:
-
-```bash
-nix profile install github:username/project
-```
-
-### Add declaratively with Nix
+### Nix flake
 
 Add the project's overlay and package to `flake.nix`.
 
