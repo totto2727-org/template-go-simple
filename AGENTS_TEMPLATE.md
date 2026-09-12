@@ -63,6 +63,6 @@ Replace the sample paths with the initialized project's actual source and test l
 - Prefer the Go standard library when it fully supports the required behavior.
 - Run `go mod tidy` after dependency changes and commit `go.mod` and `go.sum` updates together when present.
 - Update `flake.lock` when Nix inputs change.
-- Keep privileged publishing workflows disabled until every mutable `uses:` reference is pinned to an audited full commit SHA.
+- Keep privileged publishing workflows disabled until publication settings are configured and third-party action references are pinned to audited full commit SHAs. Keep shared `totto2727-org/monorepo` action references on `@main` and review their current implementation before enabling publication.
 
 _This AGENTS.md was generated from the [share-artifact skill](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/SKILL.md) and [AGENTS template](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/agents/template.md)._
