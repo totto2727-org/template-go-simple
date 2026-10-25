@@ -3,7 +3,8 @@
 
   inputs.nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
 
-  outputs = { nixpkgs, ... }:
+  outputs =
+    { nixpkgs, ... }:
     let
       supportedSystems = [
         "aarch64-darwin"
@@ -14,24 +15,29 @@
       overlay = final: _previous: {
         project = final.callPackage ./package.nix { };
       };
-      mkPkgs = system: import nixpkgs {
-        inherit system;
-        overlays = [ overlay ];
-      };
+      mkPkgs =
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = [ overlay ];
+        };
     in
     {
       overlays.default = overlay;
 
-      packages = forEachSystem (system:
+      packages = forEachSystem (
+        system:
         let
           pkgs = mkPkgs system;
         in
         rec {
           inherit (pkgs) project;
           default = project;
-        });
+        }
+      );
 
-      devShells = forEachSystem (system:
+      devShells = forEachSystem (
+        system:
         let
           pkgs = mkPkgs system;
         in
@@ -42,7 +48,12 @@
               pkgs.golangci-lint
               pkgs.just
             ];
+            shellHook = ''
+              # Enable Git Hook
+              vp config
+            '';
           };
-        });
+        }
+      );
     };
 }
