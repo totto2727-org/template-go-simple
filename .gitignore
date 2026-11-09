@@ -6,3 +6,4 @@ result-*
 coverage.out
 *.test
 .DS_Store
+/tmp/
